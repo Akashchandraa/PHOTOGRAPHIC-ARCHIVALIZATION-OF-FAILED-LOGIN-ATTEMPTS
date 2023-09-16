@@ -26,7 +26,7 @@ def capture_face():
 #playing sound you like
 
 def play_alert():
-    engine.say("charan fucker leave my device ")
+    engine.say("leave my device you bloody !")
     engine.runAndWait()
 
 #logic to capture the thief face
@@ -40,9 +40,9 @@ while password_attempts < max_attempts:
     password_attempts += 1
   
     if password_attempts == max_attempts:
-        play_alert()
         capture_face()
-        print("Donga dhorikesadu roiii")
+        play_alert()
+        print("you can't hide your face damn")
         break
     else:
         print("Incorrect password! Attempts left: {max_attempts - password_attempts}")
