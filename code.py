@@ -3,33 +3,32 @@ import cv2
 import pyttsx3
 
 #recognition of knownface in the team
-#class akash:
 
-known_image = face_recognition.load_image_file("known_face.jpg")
+known_image = face_recognition.load_image_file("akash.jpg")
 known_encoding = face_recognition.face_encodings(known_image)[0]
 
 #intiallizing the required varibles
 
 password_attempts = 0
-max_attempts = 3
-engine = pyttsx3.init()
+max_attempts = 5
+warning = pyttsx3.init()
 
 #function to record and store the face of thief
 
 def capture_face():
-    video_capture = cv2.VideoCapture(0)
-    _, frame = video_capture.read()
-    video_capture.release()
+    image_capture = cv2.VideoCapture(0)
+    _, frame = image_capture.read()
+    image_capture.release()
     cv2.imwrite("captured1.jpg", frame)
    # cv2.imshow("captured_face", frame)
 
-#playing sound you like
+#giving warning to the thief
 
-def play_alert():
-    engine.say("leave my device you bloody !")
-    engine.runAndWait()
+def warn():
+    warning.say("leave my device you bloody orelse you are prohibited !")
+    warning.runAndWait()
 
-#logic to capture the thief face
+#logic to capture the thief face and warn the thief
     
 while password_attempts < max_attempts:
     password = input("Enter password:")
@@ -41,8 +40,9 @@ while password_attempts < max_attempts:
   
     if password_attempts == max_attempts:
         capture_face()
-        play_alert()
+        warn()
         print("you can't hide your face damn")
         break
+        
     else:
         print("Incorrect password! Attempts left: {max_attempts - password_attempts}")
