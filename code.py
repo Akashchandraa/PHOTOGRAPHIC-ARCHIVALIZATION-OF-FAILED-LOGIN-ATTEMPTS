@@ -45,4 +45,4 @@ while password_attempts < max_attempts:
         break
         
     else:
-        print("Incorrect password! Attempts left: {max_attempts - password_attempts}")
+        print("Incorrect password! Attempts left:- {}".format(max_attempts-password_attempts))
